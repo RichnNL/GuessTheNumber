@@ -1,51 +1,50 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        guessthenumberapp
-      </h1>
-      <h2 class="subtitle">
-        Three players guess the number to win the game
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <b-container fluid :class="containerClass" class="container h-100">
+    <b-row >
+      <GNHeader> </GNHeader>
+    </b-row>
+
+    <b-row>
+      <GNMessageContainer></GNMessageContainer>
+    </b-row>
+    <b-row >
+      <GNPlayerContainer :playerNumber=1 ></GNPlayerContainer>
+      <GNPlayerContainer :playerNumber=2></GNPlayerContainer>
+      <GNPlayerContainer :playerNumber=3></GNPlayerContainer>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import GNHeader from '~/components/GNHeader.vue';
+import GNMessageContainer from '~/components/GNMessageContainer.vue';
+import GNPlayer from '~/components/GNPlayer.vue';
+import GNPlayerContainer from '~/components/GNPlayerContainer.vue';
+import GNPlayerMessage from '~/components/GNPlayerMessage.vue'
 
 export default {
   components: {
-    Logo
+    GNHeader,
+    GNMessageContainer,
+    GNPlayer,
+    GNPlayerContainer,
+    GNPlayerMessage
+  },
+   computed: {
+    containerClass: function() {
+      return this.$mq + "Container";
+    }
   }
 }
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.desktopContainer {
+  padding: 5% auto;
+}
+
+.mobileContainer {
+  padding: 0;
 }
 
 .title {
