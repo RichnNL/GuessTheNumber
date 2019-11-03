@@ -48,7 +48,15 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+   extend (config, { isDev }) {
+     if (isDev && process.client) {
+       config.module.rules.push(
+         {
+           enforce: 'pre',
+           test: /\.(js|vue)$/,
+           loader: 'eslint-loader',
+           exclude: /(node_modules)/})
+      }
     }
   }
 }
