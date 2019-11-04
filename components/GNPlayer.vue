@@ -7,6 +7,7 @@
           :state="inputValid"
            trim
            type="text"></b-form-input>
+        
           <b-form-invalid-feedback id="input-live-feedback">
             Invalid Number
           </b-form-invalid-feedback>
@@ -15,7 +16,7 @@
     
     <b-row>
       <b-col>
-       <b-button @click="$store.commit('gameState/submitGuess', playerNumber,typedInput)" :disabled="canSubmit" id="btn" variant="success">Submit</b-button>
+            <b-button @click="submitInput(typedInput)"  :disabled="canSubmit" id="btn" variant="success">Submit</b-button>
       </b-col>
     </b-row>
   </b-col>
@@ -56,7 +57,16 @@ export default {
           return true;
         }
       }
+    },
+     methods: {
+     submitInput (data) {
+       const d = {player: this.playerNumber, guess: data};
+       this.$store.dispatch('gameState/submitGuess', d).then(result => {
+         this.typedInput = '';
+       });
+       
     }
+  }
 }
 </script>
 
@@ -69,6 +79,7 @@ export default {
 #input-live-feedback {
   text-align: center;
 }
+
 
 #btn {
   max-width: 6em;
