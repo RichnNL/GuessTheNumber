@@ -9,6 +9,10 @@ router.get('/guess', async function (req, res, next) {
   try {
     
     const {player, guess} = req.query;
+    if(!guess || !player){
+      res.sendStatus(404)
+      return;
+    }
     if(guess == 70) {
       res.cookie('answer', '');
         res.json( { guess: 'Bingo!!!' });

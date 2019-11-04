@@ -91,7 +91,7 @@ export const mutations = {
         let params = new URLSearchParams();
         params.append('player', 1)
         params.append('guess', state.player1GuessValue)
-        await this.$axios.$get('https://guess-the-number3-11-19.herokuapp.com/',{
+        await this.$axios.$get('https://guess-the-number3-11-19.herokuapp.com/api/guess/',{
           params: params
         }).then(result => {
           commit('setPlayerValues', {player: 1, message: result.guess})
@@ -99,7 +99,7 @@ export const mutations = {
         params = new URLSearchParams();
         params.append('player', 2);
         params.append('guess', state.player2GuessValue)
-        await this.$axios.$get('https://guess-the-number3-11-19.herokuapp.com/',{
+        await this.$axios.$get('https://guess-the-number3-11-19.herokuapp.com/api/guess/',{
           params: params
         }).then(result => {
           commit('setPlayerValues', {player: 2, message: result.guess})
@@ -107,7 +107,7 @@ export const mutations = {
         params = new URLSearchParams();
         params.append('player', 3);
         params.append('guess', state.player3GuessValue);
-        await this.$axios.$get('https://guess-the-number3-11-19.herokuapp.com/',{
+        await this.$axios.$get('https://guess-the-number3-11-19.herokuapp.com/api/guess/',{
           params: params
         }).then(result => {
           commit('setPlayerValues', {player: 3, message: result.guess})
