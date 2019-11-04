@@ -1,6 +1,19 @@
+The application uses the endpoint /API/Guess/?player?guess, the endpoint has a specific number the user can guess. The answer is 70
+
+There is only one page and which uses three components, GNHeader which stands for GuessNumberHeader,
+GNMessageContainer to report get all users feedback, and a GNPlayerContainer component which then handles two player components.
+
+The Application is SSR with express node.js
+
+The store holds the values for the client and is used for most of the components. 
+
+
+
+
 # guessthenumberapp
 
 > Three players guess the number to win the game
+
 
 ## Build Setup
 
